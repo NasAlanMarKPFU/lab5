@@ -80,16 +80,6 @@ namespace ConsoleApplication1
             }
             
         }
-        public static int zd4(params int[] mass)
-        {
-            int sum = 0;
-            for (int i = 0; i < mass.Length; i++)
-            {
-                sum += mass[i];
-            }
-
-            return sum;
-        }
 
         public static void zd31()
         {
