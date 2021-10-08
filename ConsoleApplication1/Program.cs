@@ -116,41 +116,6 @@ namespace ConsoleApplication1
             return sum;
         }
 
-        public static void zd51()
-        {
-            Console.WriteLine("Введите цифру от 0 до 9\n");
-            int number_to_draw = Convert.ToInt32(Console.ReadLine());
- 
- 
-            string[] paths = new string[] { @".\jpg",
-                @"G:\coding\download\numbers\01.gif", @"G:\coding\download\numbers\02.gif",
-                @"G:\coding\download\numbers\03.gif", @"G:\coding\download\numbers\04.gif",
-                @"G:\coding\download\numbers\05.gif", @"G:\coding\download\numbers\06.gif",
-                @"G:\coding\download\numbers\07.gif", @"G:\coding\download\numbers\08.gif",
-                @"G:\coding\download\numbers\09.gif"};
- 
-            string path = paths[number_to_draw];
-            Bitmap bitmap = new Bitmap(path);
-            string result = "";
-            for (int y = 0; y < bitmap.Height; y ++)
-            {
-                for (int x = 0; x < bitmap.Width; x ++)
-                {
-                    int pixelcolor = bitmap.GetPixel(x, y).R;
-                    if (pixelcolor == 255)
-                    {
-                        result += "..";
-                    }
-                    else
-                    {
-                        result += "#";
-                    }
-                }
-                result += "\n";
-            }
- 
-            Console.WriteLine(result);
-        }
 
 
 
