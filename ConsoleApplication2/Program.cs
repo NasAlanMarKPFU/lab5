@@ -256,7 +256,10 @@ namespace ConsoleApplication2
                     if (i == len - 1)
                     {
                         way.Pop();
-                        now = way.Peek();
+                        if (way.Count != 0)
+                            now = way.Peek();
+                        else
+                            return way;
                     }
                         
                 }
@@ -271,6 +274,7 @@ namespace ConsoleApplication2
         {
             int[] roots = new int[len];
             int[] visit = new int[len];
+            visit[start] = 1;
             roots[start] = -1;
             Queue<int> queue = new Queue<int>();
             int now;
@@ -297,7 +301,7 @@ namespace ConsoleApplication2
 
             }
 
-            roots[end] = -1;
+            roots[start] = -2;
             return roots;
 
         }
@@ -375,20 +379,21 @@ namespace ConsoleApplication2
             else
             {
                 int[] roots = bfs_way(mass, len, end-1, start-1);
-                if(roots[end-1]==-1)
+                if(roots[end-1]==-2)
                     Console.WriteLine("can't be way");
                 else
                 {
-                    reb = end-1;
-                    while (reb!=start-1)
+                    reb = start-1;
+                    while (roots[reb]!=-1)
                     {
+                        
                         Console.Write((reb+1)+"->");
                         reb = roots[reb];
 
                     }
                     
 
-                    Console.WriteLine($"{start}");
+                    Console.WriteLine($"{end}");
                 }
             }
 
