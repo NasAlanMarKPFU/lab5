@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 namespace ConsoleApplication1
 {
     internal class Program
@@ -115,21 +116,47 @@ namespace ConsoleApplication1
             return sum;
         }
 
+        public static void zd51()
+        {
+            Console.WriteLine("Введите цифру от 0 до 9\n");
+            int number_to_draw = Convert.ToInt32(Console.ReadLine());
+ 
+ 
+            string[] paths = new string[] { @".\jpg",
+                @"G:\coding\download\numbers\01.gif", @"G:\coding\download\numbers\02.gif",
+                @"G:\coding\download\numbers\03.gif", @"G:\coding\download\numbers\04.gif",
+                @"G:\coding\download\numbers\05.gif", @"G:\coding\download\numbers\06.gif",
+                @"G:\coding\download\numbers\07.gif", @"G:\coding\download\numbers\08.gif",
+                @"G:\coding\download\numbers\09.gif"};
+ 
+            string path = paths[number_to_draw];
+            Bitmap bitmap = new Bitmap(path);
+            string result = "";
+            for (int y = 0; y < bitmap.Height; y ++)
+            {
+                for (int x = 0; x < bitmap.Width; x ++)
+                {
+                    int pixelcolor = bitmap.GetPixel(x, y).R;
+                    if (pixelcolor == 255)
+                    {
+                        result += "..";
+                    }
+                    else
+                    {
+                        result += "#";
+                    }
+                }
+                result += "\n";
+            }
+ 
+            Console.WriteLine(result);
+        }
+
+
+
         public static void zd5()
         {
-            string[] digital = new string[]{
-                "#####\n#   #\n#   #\n#   #\n#####\n",
-                "##\n  # #\n #  #\n    #\n    #\n    #\n",
-                "#####\n    #\n#####\n#\n#####\n",
-                "#####\n    #\n#####\n    #\n#####\n",
-                "#   #\n#   #\n#####\n    #\n    #\n",
-                "#####\n#    \n#####\n    #\n#####\n",
-                "#####\n#    \n#####\n#   #\n#####\n",
-                "#####\n    #\n  ###\n  #  \n #   \n",
-                "#####\n#   #\n#####\n#   #\n#####\n",
-                "#####\n#   #\n#####\n    #\n#####\n"
 
-            };
             Console.Write("input : ");
             string str = Console.ReadLine();
             if (str == "exit" || str == "закрыть")
@@ -140,13 +167,74 @@ namespace ConsoleApplication1
                 if (str.Length != 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("error");
+
+                    Bitmap bitmap =
+                        new Bitmap(@"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\error.jpg");
+                    string result = "";
+                    for (int y = 0; y < bitmap.Height; y++)
+                    {
+                        for (int x = 0; x < bitmap.Width; x++)
+                        {
+
+                            int color = bitmap.GetPixel(x, y).R;
+                            if (color <= 120)
+                            {
+                                result += " ";
+                            }
+                            else
+                            {
+                                result += "#";
+                            }
+                        }
+
+                        result += "\n";
+                    }
+
+
+                    Console.WriteLine(result);
                     System.Threading.Thread.Sleep(3000);
                     Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine(digital[num]);
+                    string[] digital = new string[]
+                    {
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\0.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\1.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\2.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\3.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\4.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\5.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\6.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\7.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\8.jpg",
+                        @"C:\Users\lm\RiderProjects\ConsoleApplication1\ConsoleApplication1\9.jpg"
+                    };
+
+                    Bitmap bitmap = new Bitmap(digital[num]);
+                    string result = "";
+                    for (int y = 0; y < bitmap.Height; y += 15)
+                    {
+                        for (int x = 0; x < bitmap.Width; x += 15)
+                        {
+
+                            int color = bitmap.GetPixel(x, y).R;
+                            if (color >= 120)
+                            {
+                                result += " ";
+                            }
+                            else
+                            {
+                                result += "#";
+                            }
+                        }
+
+                        result += "\n";
+                    }
+
+
+                    Console.WriteLine(result);
+
                 }
             }
             catch (Exception e)
@@ -155,13 +243,11 @@ namespace ConsoleApplication1
             }
 
         }
-        
+
 
         public static void Main(string[] args)
         {
-
-
-           
+            zd5();
         }
     }
 }
